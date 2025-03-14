@@ -48,6 +48,19 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   
   initializeObserver();
+
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const navLinks = document.querySelector(".nav-links");
+
+  mobileMenu.addEventListener("click", function () {
+    navLinks.classList.toggle("active");
+  });
+
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function () {
+      navLinks.classList.remove("active");
+    });
+  });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
