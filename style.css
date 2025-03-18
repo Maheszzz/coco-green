@@ -2185,3 +2185,55 @@ footer {
 
 /* ...existing code... */
 
+/* Button Styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    max-width: 100%;
+    padding: clamp(8px, 2vw, 15px) clamp(15px, 3vw, 30px);
+    border: none;
+    border-radius: 5px;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+}
+
+/* Button hover effect */
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive button adjustments */
+@media (max-width: 768px) {
+    .btn {
+        min-width: 100px;
+        width: 100%;
+        margin: 10px 0;
+        padding: 12px 20px;
+    }
+    
+    .product-card .btn,
+    .modal-content .btn {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        font-size: 0.875rem;
+        padding: 10px 15px;
+    }
+}
+
+/* ...existing code... */
+
