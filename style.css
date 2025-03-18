@@ -902,18 +902,29 @@ footer {
 .main-image {
   flex: 1;
   text-align: center;
+  overflow: hidden; /* Keep this to prevent overflow */
+  border-radius: 8px; /* Keep any border styling */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Keep any shadow styling */
+  pointer-events: none; /* Disable any mouse interactions */
 }
 
 .main-image img {
-  max-width: 100%;
-  height: auto;
-  /* Remove animation effects */
-  transition: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: default;
+  pointer-events: none; /* Disable any mouse interactions */
+  transform: none !important; /* Force no transform */
+  transition: none !important; /* Force no transitions */
 }
 
-.main-image img:hover {
-  /* Remove animation effects */
-  transform: none;
+/* Remove these zoom-related style blocks entirely */
+.magnifier-lens,
+.zoom-lens,
+.zoom-result,
+.zoomable-image,
+.zoom-container {
+  display: none !important;
 }
 
 .thumbnail-container {
@@ -998,17 +1009,21 @@ footer {
 .main-image {
   flex: 3;
   text-align: center;
+  overflow: hidden; /* Keep this to prevent overflow */
+  border-radius: 8px; /* Keep any border styling */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Keep any shadow styling */
 }
 
 .main-image img {
   max-width: 100%;
   height: auto;
-  /* Remove animation effects */
+  /* Remove all transition and transform properties */
   transition: none;
+  transform: none;
 }
 
-.main-image img:hover {
-  /* Remove animation effects */
+/* Remove any hover effects */
+.main-image:hover img {
   transform: none;
 }
 
@@ -1084,7 +1099,7 @@ footer {
   justify-content: center;
   overflow: hidden;
   border-radius: 8px;
-  transition: transform 0.2s, box-shadow 0.2s; /* Reduced from 0.3s */
+  transition: none, box-shadow 0.2s; /* Reduced from 0.3s */
   flex-shrink: 0; /* Prevent the container size from changing */
 }
 
