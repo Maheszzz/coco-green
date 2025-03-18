@@ -311,3 +311,358 @@ function initWorkSlideshow() {
 
 document.addEventListener('DOMContentLoaded', initWorkSlideshow);
 
+// Image Zoom functionality
+function initializeImageZoom() {
+  const mainImage = document.getElementById('mainImage');
+  const container = mainImage.parentElement;
+  let zoomActive = false;
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  // Create zoom overlay
+  const zoomOverlay = document.createElement('div');
+  zoomOverlay.className = 'zoom-overlay';
+  container.appendChild(zoomOverlay);
+
+  // Handle mouse/touch interactions
+  function handleZoomStart(e) {
+    if (window.innerWidth <= 768) return; // Disable on mobile
+    
+    const rect = mainImage.getBoundingClientRect();
+    zoomActive = true;
+    
+    // Show zoom overlay
+    zoomOverlay.style.backgroundImage = `url(${mainImage.src})`;
+    zoomOverlay.style.display = 'block';
+    
+    updateZoomPosition(e);
+  }
+
+  function handleZoomMove(e) {
+    if (!zoomActive) return;
+    e.preventDefault();
+    updateZoomPosition(e);
+  }
+
+  function handleZoomEnd() {
+    zoomActive = false;
+    zoomOverlay.style.display = 'none';
+  }
+
+  function updateZoomPosition(e) {
+    const rect = mainImage.getBoundingClientRect();
+    const x = (e.type.includes('touch') ? e.touches[0].clientX : e.clientX) - rect.left;
+    const y = (e.type.includes('touch') ? e.touches[0].clientY : e.clientY) - rect.top;
+    
+    const xPercent = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    const yPercent = Math.max(0, Math.min(100, (y / rect.height) * 100));
+    
+    zoomOverlay.style.backgroundPosition = `${xPercent}% ${yPercent}%`;
+  }
+
+  // Event listeners for mouse
+  mainImage.addEventListener('mouseenter', handleZoomStart);
+  mainImage.addEventListener('mousemove', handleZoomMove);
+  mainImage.addEventListener('mouseleave', handleZoomEnd);
+
+  // Event listeners for touch with improved handling
+  mainImage.addEventListener('touchstart', (e) => {
+    if (window.innerWidth <= 768) {
+      // Enable pinch zoom on mobile
+      mainImage.style.touchAction = 'pinch-zoom';
+      return;
+    }
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    handleZoomStart(e);
+  });
+
+  mainImage.addEventListener('touchmove', (e) => {
+    if (window.innerWidth <= 768) return;
+    handleZoomMove(e);
+  });
+
+  mainImage.addEventListener('touchend', handleZoomEnd);
+
+  // Keyboard accessibility
+  mainImage.setAttribute('tabindex', '0');
+  mainImage.setAttribute('role', 'img');
+  mainImage.setAttribute('aria-label', 'Product image with zoom capability. Press Enter to toggle zoom mode.');
+
+  mainImage.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      zoomActive = !zoomActive;
+      if (zoomActive) {
+        zoomOverlay.style.display = 'block';
+      } else {
+        zoomOverlay.style.display = 'none';
+      }
+    }
+  });
+}
+
+// Lazy loading for thumbnails
+function initializeLazyLoading() {
+  const images = document.querySelectorAll('.thumbnail img, #mainImage');
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+        observer.unobserve(img);
+      }
+    });
+  }, {
+    rootMargin: '50px'
+  });
+
+  images.forEach(img => {
+    if (img.src) {
+      img.dataset.src = img.src;
+      img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'; // Tiny placeholder
+      imageObserver.observe(img);
+    }
+  });
+}
+
+// Initialize zoom and lazy loading when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  initializeImageZoom();
+  initializeLazyLoading();
+});
+
+function initializeAdvancedZoom() {
+  const container = document.querySelector('.main-image-container');
+  const mainImage = document.querySelector('#mainImage');
+  
+  // Create zoom elements
+  const lens = document.createElement('div');
+  const zoomResult = document.createElement('div');
+  lens.className = 'zoom-lens';
+  zoomResult.className = 'zoom-result';
+  
+  container.style.position = 'relative';
+  container.appendChild(lens);
+  container.appendChild(zoomResult);
+
+  let zoomLevel = 2.5; // Default zoom level
+  let isZooming = false;
+
+  function calculateZoom(e) {
+    if (!isZooming) return;
+    
+    const rect = mainImage.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // Calculate positions as percentages
+    const xPercentage = (x / rect.width) * 100;
+    const yPercentage = (y / rect.height) * 100;
+
+    // Move lens
+    lens.style.left = `${x - lens.offsetWidth / 2}px`;
+    lens.style.top = `${y - lens.offsetHeight / 2}px`;
+
+    // Update zoom result
+    zoomResult.style.backgroundImage = `url(${mainImage.src})`;
+    zoomResult.style.backgroundSize = `${mainImage.width * zoomLevel}px ${mainImage.height * zoomLevel}px`;
+    zoomResult.style.backgroundPosition = `${-x * zoomLevel + lens.offsetWidth}px ${-y * zoomLevel + lens.offsetHeight}px`;
+  }
+
+  // Mouse events
+  container.addEventListener('mouseenter', () => {
+    if (window.innerWidth <= 768) return;
+    isZooming = true;
+    lens.style.display = 'block';
+    zoomResult.style.display = 'block';
+  });
+
+  container.addEventListener('mousemove', calculateZoom);
+
+  container.addEventListener('mouseleave', () => {
+    isZooming = false;
+    lens.style.display = 'none';
+    zoomResult.style.display = 'none';
+  });
+
+  // Touch events
+  let touch = null;
+
+  container.addEventListener('touchstart', (e) => {
+    if (window.innerWidth <= 768) {
+      // Enable native pinch zoom on mobile
+      container.style.touchAction = 'pinch-zoom';
+      return;
+    }
+    touch = e.touches[0];
+    isZooming = true;
+    lens.style.display = 'block';
+    zoomResult.style.display = 'block';
+    calculateZoom(touch);
+  });
+
+  container.addEventListener('touchmove', (e) => {
+    if (window.innerWidth <= 768 || !isZooming) return;
+    e.preventDefault();
+    touch = e.touches[0];
+    calculateZoom(touch);
+  });
+
+  container.addEventListener('touchend', () => {
+    isZooming = false;
+    lens.style.display = 'none';
+    zoomResult.style.display = 'none';
+  });
+
+  // Keyboard accessibility
+  mainImage.setAttribute('tabindex', '0');
+  mainImage.setAttribute('role', 'img');
+  mainImage.setAttribute('aria-label', 'Product image. Press Enter to toggle zoom mode, then use arrow keys to move the zoom lens.');
+
+  let keyboardZoom = false;
+  let lensPosition = { x: 0, y: 0 };
+
+  mainImage.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      keyboardZoom = !keyboardZoom;
+      if (keyboardZoom) {
+        lens.style.display = 'block';
+        zoomResult.style.display = 'block';
+        lensPosition = { x: mainImage.offsetWidth / 2, y: mainImage.offsetHeight / 2 };
+        updateLensPosition();
+      } else {
+        lens.style.display = 'none';
+        zoomResult.style.display = 'none';
+      }
+    } else if (keyboardZoom && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+      e.preventDefault();
+      const step = 10;
+      switch (e.key) {
+        case 'ArrowUp': lensPosition.y -= step; break;
+        case 'ArrowDown': lensPosition.y += step; break;
+        case 'ArrowLeft': lensPosition.x -= step; break;
+        case 'ArrowRight': lensPosition.x += step; break;
+      }
+      updateLensPosition();
+    }
+  });
+
+  function updateLensPosition() {
+    // Keep lens within bounds
+    lensPosition.x = Math.max(0, Math.min(lensPosition.x, mainImage.offsetWidth));
+    lensPosition.y = Math.max(0, Math.min(lensPosition.y, mainImage.offsetHeight));
+    
+    lens.style.left = `${lensPosition.x - lens.offsetWidth / 2}px`;
+    lens.style.top = `${lensPosition.y - lens.offsetHeight / 2}px`;
+    
+    zoomResult.style.backgroundImage = `url(${mainImage.src})`;
+    zoomResult.style.backgroundSize = `${mainImage.width * zoomLevel}px ${mainImage.height * zoomLevel}px`;
+    zoomResult.style.backgroundPosition = `${-lensPosition.x * zoomLevel + lens.offsetWidth}px ${-lensPosition.y * zoomLevel + lens.offsetHeight}px`;
+  }
+}
+
+// Initialize zoom functionality when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  initializeAdvancedZoom();
+});
+
+function initializeZoom() {
+  const mainContainer = document.querySelector('.main-image-container');
+  const mainImage = document.querySelector('#mainImage');
+  const zoomLens = document.querySelector('.zoom-lens');
+  const zoomResult = document.querySelector('.zoom-result');
+  
+  let zoomLevel = 2.5;
+  let isZooming = false;
+
+  function updateZoom(e) {
+    const rect = mainImage.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const xPercent = (x / rect.width) * 100;
+    const yPercent = (y / rect.height) * 100;
+
+    const lensSize = 100;
+    const lensLeft = Math.max(0, Math.min(x - lensSize / 2, rect.width - lensSize));
+    const lensTop = Math.max(0, Math.min(y - lensSize / 2, rect.height - lensSize));
+    zoomLens.style.left = `${lensLeft}px`;
+    zoomLens.style.top = `${lensTop}px`;
+
+    zoomResult.style.backgroundImage = `url(${mainImage.src})`;
+    zoomResult.style.backgroundSize = `${rect.width * zoomLevel}px ${rect.height * zoomLevel}px`;
+    zoomResult.style.backgroundPosition = `${-xPercent * zoomLevel + 50}% ${-yPercent * zoomLevel + 50}%`;
+  }
+
+  function handleZoomIn() {
+    zoomLevel = Math.min(zoomLevel + 0.5, 5);
+    isZooming = true;
+    const rect = mainImage.getBoundingClientRect();
+    updateZoom({ clientX: rect.left + rect.width / 2, clientY: rect.top + rect.height / 2 });
+  }
+
+  function handleZoomOut() {
+    zoomLevel = Math.max(zoomLevel - 0.5, 1);
+    isZooming = true;
+    const rect = mainImage.getBoundingClientRect();
+    updateZoom({ clientX: rect.left + rect.width / 2, clientY: rect.top + rect.height / 2 });
+  }
+
+  function handleMouseWheel(e) {
+    e.preventDefault();
+    if (e.deltaY < 0) {
+      handleZoomIn();
+    } else {
+      handleZoomOut();
+    }
+  }
+
+  mainContainer.addEventListener('mouseenter', () => {
+    if (window.innerWidth <= 768) return;
+    isZooming = true;
+    zoomLens.style.display = 'block';
+    zoomResult.style.display = 'block';
+  });
+
+  mainContainer.addEventListener('mousemove', updateZoom);
+
+  mainContainer.addEventListener('mouseleave', () => {
+    isZooming = false;
+    zoomLens.style.display = 'none';
+    zoomResult.style.display = 'none';
+  });
+
+  mainContainer.addEventListener('wheel', handleMouseWheel);
+
+  // Touch support for mobile
+  mainContainer.addEventListener('touchstart', (e) => {
+    if (window.innerWidth <= 768) {
+      mainImage.style.touchAction = 'pinch-zoom';
+      return;
+    }
+    e.preventDefault();
+    isZooming = true;
+    zoomLens.style.display = 'block';
+    zoomResult.style.display = 'block';
+    updateZoom(e.touches[0]);
+  });
+
+  mainContainer.addEventListener('touchmove', (e) => {
+    if (window.innerWidth <= 768) return;
+    e.preventDefault();
+    updateZoom(e.touches[0]);
+  });
+
+  mainContainer.addEventListener('touchend', () => {
+    isZooming = false;
+    zoomLens.style.display = 'none';
+    zoomResult.style.display = 'none';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initializeZoom();
+});
+
