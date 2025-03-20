@@ -644,279 +644,11 @@ footer {
     transform: none;
 }
 
-/* Modal Styles */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
 
-.modal-content {
-  background-color: var(--white);
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 500px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.close-btn {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* Modal styles */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal-content {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: none;
-    position: relative;
-    max-height: 80vh;
-    overflow-y: auto;
-  }
-  
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #555;
-    transition: color 0.2s;
-  }
-  
-  .close-btn:hover {
-    color: #000;
-  }
-  
-  .modal-content h2 {
-    color: #333;
-    margin-top: 0;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .modal-content p {
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 25px;
-  }
-  
-  .modal-content .btn {
-    display: inline-block;
-    margin-top: 10px;
-  }
-
-.image-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  max-width: 400px;
-  margin: 20px 0;
-}
-
-.zoomable-image {
-  width: 100%;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.zoomable-image:hover {
-  transform: scale(1.2);
-}
-
-.zoomable-image {
-  width: 100%;
-  max-width: 400px;
-  margin: 20px 0;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.zoomable-image:hover {
-  transform: scale(1.2);
-}
-
-.fixed-size-image {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  max-height: 300px;
-  object-fit: cover;
-}
 
 /* Full-width image styles */
-.full-width-image {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-/* Modal styles - add these to your style.css file */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal-content {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    width: 70%; /* Increase width to 70% of the website */
-    max-width: none; /* Remove max-width constraint */
-    position: relative;
-    max-height: 80vh;
-    overflow-y: auto;
-  }
-  
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #555;
-    transition: color 0.2s;
-    z-index: 1001;
-  }
-  
-  .close-btn:hover {
-    color: #000;
-  }
-  
-  .modal-content h2 {
-    color: #2e7d32;
-    margin-top: 0;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .modal-image-container {
-    width: 100%;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .modal-product-image {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    max-height: 300px;
-    object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .modal-content p {
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 25px;
-    text-align: justify;
-  }
-  
-  .modal-content .btn {
-    display: inline-block;
-    margin-top: 10px;
-    background-color: #ffc107;
-    color: #333;
-    padding: 12px 30px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  .modal-content .btn:hover {
-    background-color: #e0a800;
-    transform: scale(1.05);
-  }
-  
-  @media (max-width: 768px) {
-    .modal-content {
-      width: 95%;
-      padding: 20px;
-    }
-    
-    .modal-product-image {
-      max-width: 100%;
-    }
-  }
 
-.modal-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* ...existing styles... */
-}
 
-.product-gallery {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.main-image {
-  flex: 1;
-  text-align: center;
-  overflow: hidden; /* Keep this to prevent overflow */
-  border-radius: 8px; /* Keep any border styling */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Keep any shadow styling */
-  pointer-events: none; /* Disable any mouse interactions */
-}
-
-.main-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  cursor: default;
-  pointer-events: none; /* Disable any mouse interactions */
-  transform: none !important; /* Force no transform */
-  transition: none !important; /* Force no transitions */
-}
 
 /* Remove these zoom-related style blocks entirely */
 .magnifier-lens,
@@ -990,83 +722,9 @@ footer {
 }
 
 /* ...existing code... */
-.modal-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 70%;
-  max-width: none;
-  max-height: 80vh;
-  overflow-y: auto;
-}
 
-.product-gallery {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.main-image {
-  flex: 3;
-  text-align: center;
-  overflow: hidden; /* Keep this to prevent overflow */
-  border-radius: 8px; /* Keep any border styling */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Keep any shadow styling */
-}
-
-.main-image img {
-  max-width: 100%;
-  height: auto;
-  /* Remove all transition and transform properties */
-  transition: none;
-  transform: none;
-}
 
 /* Remove any hover effects */
-.main-image:hover img {
-  transform: none;
-}
-
-.thumbnail-column {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.thumbnails {
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  max-height: 300px;
-}
-
-.thumbnail {
-  width: 50px;
-  height: 50px;
-  margin: 5px 0;
-  cursor: pointer;
-  /* Remove animation effects */
-  transition: none;
-}
-
-.thumbnail:hover {
-  /* Remove animation effects */
-  transform: none;
-}
-
-.scroll-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 10px;
-}
-
-.scroll-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
 
 /* ...existing code... */
 
@@ -1124,95 +782,7 @@ footer {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.main-image-container {
-  flex: 1;
-  position: relative;
-}
 
-.main-image {
-  width: 100%;
-  height: 300px; /* Reduce height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.main-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensure the image covers the container without distortion */
-  transition: transform 0.3s;
-}
-
-.main-image:hover img {
-  transform: scale(1.1);
-}
-
-.product-info {
-  margin-top: 20px;
-  padding: 10px;
-}
-
-.product-info h1 {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 10px;
-  font-weight: normal;
-}
-
-.features {
-  display: flex;
-  align-items: center;
-  color: #666;
-  margin-bottom: 20px;
-}
-
-.features img {
-  width: 20px;
-  margin-right: 5px;
-}
-
-.buttons {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.btn {
-  flex: 1;
-  padding: 15px;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 16px;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-cart {
-  background-color: #ff9f00;
-}
-
-.btn-buy {
-  background-color: #fb641b;
-}
-
-.arrow {
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
 
 /* Responsive Styles */
 @media (max-width: 768px) {
@@ -1538,94 +1108,52 @@ footer {
   100% { opacity: 1; }
 }
 
-/* Modal styles */
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s;
+}
 
 .modal-content {
-  background-color: #fff;
-  padding: 20px;
+  background-color: var(--white);
+  margin: 10% auto;
+  padding: 30px;
   border-radius: 8px;
-  width: 90%; /* Changed from 70% */
-  max-width: 800px; /* Added max-width */
-  max-height: 90vh; /* Changed from 80vh */
-  overflow-y: auto;
+  width: 90%;
+  max-width: 500px;
   position: relative;
-  margin: 20px;
+  animation: slideIn 0.3s;
 }
 
-.product-container {
-  max-width: 100%; /* Changed from 1000px */
-  margin: 0 auto;
-  padding: 15px; /* Reduced from 80px */
-  display: flex;
-  flex-direction: column; /* Changed to column on all screens */
-  gap: 20px;
+.close {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #666;
+  cursor: pointer;
 }
 
-.thumbnail-container {
-  display: flex;
-  flex-direction: row; /* Changed to row */
-  gap: 10px;
-  overflow-x: auto; /* Allow horizontal scrolling */
-  padding: 10px 0;
-  justify-content: center;
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+.close:hover {
+  color: #000;
 }
 
-.thumbnail {
-  width: 50px; /* Increased from 30px */
-  height: 50px; /* Increased from 30px */
-  flex: 0 0 auto; /* Prevent shrinking */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.main-image-container {
-  width: 100%;
-}
-
-.main-image {
-  width: 100%;
-  height: auto;
-  min-height: 200px;
-  max-height: 400px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .modal-content {
-    width: 95%;
-    padding: 15px;
-    margin: 10px;
-  }
-
-  .product-container {
-    padding: 10px;
-  }
-
-  .product-description {
-    font-size: 14px;
-    line-height: 1.4;
-  }
-
-  .btn {
-    width: 100%;
-    margin-top: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .modal-content {
-    width: 98%;
-    padding: 10px;
-    margin: 5px;
-  }
-
-  .thumbnail {
-    width: 40px;
-    height: 40px;
-  }
-
-  .main-image {
-    min-height: 150px;
-  }
+@keyframes slideIn {
+  from { transform: translateY(-100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 /* ...existing code... */
