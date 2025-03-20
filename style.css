@@ -1079,11 +1079,14 @@ footer {
   padding: 80px;
   display: flex;
   flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  justify-content: center; /* Center align items horizontally */
+  align-items: center; /* Center align items vertically */
 }
 
 .thumbnail-container {
   display: flex;
   flex-direction: column;
+  
   justify-content: center;
   gap: 10px;
   margin-right: 20px;
@@ -1095,6 +1098,7 @@ footer {
   border: 1px solid #ddd;
   cursor: pointer;
   display: flex;
+  
   align-items: center;
   justify-content: center;
   overflow: hidden;
