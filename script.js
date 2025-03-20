@@ -84,15 +84,20 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener('DOMContentLoaded', function () {
   const modal = document.getElementById('inquire-modal');
   const btn = document.getElementById('inquire-now-btn');
-  const span = document.getElementsByClassName('close-btn')[0];
+  const spans = document.getElementsByClassName('close-btn'); // Changed to spans
+  const span = spans.length > 0 ? spans[0] : null; // Check if spans exist
 
-  btn.onclick = function () {
-    modal.style.display = 'block';
-  };
+  if (btn) {
+    btn.onclick = function () {
+      modal.style.display = 'block';
+    };
+  }
 
-  span.onclick = function () {
-    modal.style.display = 'none';
-  };
+  if (span) {
+    span.onclick = function () {
+      modal.style.display = 'none';
+    };
+  }
 
   window.onclick = function (event) {
     if (event.target == modal) {
@@ -101,30 +106,38 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   const contactBtn = document.querySelector('.modal-content .btn');
-  contactBtn.onclick = function () {
-    modal.style.display = 'none';
-    window.location.href = '#contact';
-  };
+  if (contactBtn) {
+    contactBtn.onclick = function () {
+      modal.style.display = 'none';
+      window.location.href = '#contact';
+    };
+  }
 });
 
 document.addEventListener('DOMContentLoaded', function () {
   const modal = document.getElementById('inquire-modal');
-  const closeBtn = document.querySelector('.close-btn');
+  const closeBtns = document.querySelectorAll('.close-btn'); // Changed to querySelectorAll
   const inquireButtons = document.querySelectorAll('.inquire-now-btn');
 
   inquireButtons.forEach(button => {
     button.addEventListener('click', function (e) {
       e.preventDefault();
-      modal.style.display = 'flex';
+      if (modal) {
+        modal.style.display = 'flex';
+      }
     });
   });
 
-  closeBtn.addEventListener('click', function () {
-    modal.style.display = 'none';
+  closeBtns.forEach(closeBtn => { // Iterate through all close buttons
+    closeBtn.addEventListener('click', function () {
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    });
   });
 
   window.addEventListener('click', function (e) {
-    if (e.target == modal) {
+    if (modal && e.target == modal) {
       modal.style.display = 'none';
     }
   });
@@ -135,19 +148,31 @@ document.addEventListener('DOMContentLoaded', function () {
   const bottomBtn = document.querySelector('.bottom-btn');
   const thumbnailContainer = document.querySelector('.thumbnails');
 
-  thumbnails.forEach(thumbnail => {
-    thumbnail.addEventListener('click', () => {
-      mainImage.src = thumbnail.src;
+  if (thumbnails) {
+    thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', () => {
+        if (mainImage) {
+          mainImage.src = thumbnail.src;
+        }
+      });
     });
-  });
+  }
 
-  topBtn.addEventListener('click', () => {
-    thumbnailContainer.scrollBy({ top: -100, behavior: 'smooth' });
-  });
+  if (topBtn) {
+    topBtn.addEventListener('click', () => {
+      if (thumbnailContainer) {
+        thumbnailContainer.scrollBy({ top: -100, behavior: 'smooth' });
+      }
+    });
+  }
 
-  bottomBtn.addEventListener('click', () => {
-    thumbnailContainer.scrollBy({ top: 100, behavior: 'smooth' });
-  });
+  if (bottomBtn) {
+    bottomBtn.addEventListener('click', () => {
+      if (thumbnailContainer) {
+        thumbnailContainer.scrollBy({ top: 100, behavior: 'smooth' });
+      }
+    });
+  }
 });
 
 // Get references to all elements
@@ -191,10 +216,22 @@ function openModal(productName) {
     title: productName,
     content: "Please contact us for more information about this product."
   };
-  
-  modalTitle.textContent = product.title;
-  modalContent.textContent = product.content;
-  modal.style.display = "flex";
+
+  const modalId = `modal-${productName.toLowerCase().replace(/ /g, '')}`;
+  const modal = document.getElementById(modalId);
+
+  if (modal) {
+    const modalTitle = modal.querySelector(".modal-content h3");
+    const modalContentEl = modal.querySelector(".modal-content p"); // Changed variable name
+
+    if (modalTitle) {
+      modalTitle.textContent = product.title;
+    }
+    if (modalContentEl) { // Check if modalContentEl exists
+      modalContentEl.textContent = product.content;
+    }
+    modal.style.display = "flex";
+  }
 }
 
 // Add click event for each "Inquire Now" button
@@ -314,7 +351,11 @@ document.addEventListener('DOMContentLoaded', initWorkSlideshow);
 // Image Zoom functionality
 function initializeImageZoom() {
   const mainImage = document.getElementById('mainImage');
+  if (!mainImage) return; // Exit if mainImage doesn't exist
+
   const container = mainImage.parentElement;
+  if (!container) return;
+
   let zoomActive = false;
   let touchStartX = 0;
   let touchStartY = 0;
@@ -436,7 +477,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initializeAdvancedZoom() {
   const container = document.querySelector('.main-image-container');
+  if (!container) return;
+
   const mainImage = document.querySelector('#mainImage');
+  if (!mainImage) return;
   
   // Create zoom elements
   const lens = document.createElement('div');
