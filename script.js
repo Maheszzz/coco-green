@@ -666,3 +666,152 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeZoom();
 });
 
+// Initialize AOS
+// Modal functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all inquiry buttons
+  const inquireButtons = document.querySelectorAll('.inquire-now-btn');
+  // Get all close buttons
+  const closeButtons = document.querySelectorAll('.close-btn');
+  // Get all contact buttons within modals
+  const modalContactButtons = document.querySelectorAll('.modal-contact-btn');
+  
+  // Open the appropriate modal when clicking an inquiry button
+  inquireButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      const productType = this.getAttribute('data-product');
+      const modal = document.getElementById(`modal-${productType}`);
+      modal.style.display = 'block';
+      
+      // Reset zoom and thumbnail selection
+      const mainImage = document.getElementById(`mainImage-${productType}`);
+      const thumbnails = modal.querySelectorAll('.thumbnail');
+      thumbnails.forEach(thumb => {
+        thumb.classList.remove('active');
+      });
+      thumbnails[0].classList.add('active');
+      
+      // Initialize zoom for this specific modal
+      initZoom(mainImage, modal.querySelector('.zoom-lens'), modal.querySelector('.zoom-result'));
+    });
+  });
+  
+  // Close modal when clicking the close button
+  closeButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const modalId = this.getAttribute('data-modal');
+      const modal = document.getElementById(modalId);
+      modal.style.display = 'none';
+    });
+  });
+  
+  // Close modal when clicking outside the modal content
+  window.addEventListener('click', function(event) {
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+  });
+  
+  // Handle modal contact buttons to pre-fill subject
+  modalContactButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      const productName = this.getAttribute('data-product');
+      // Close the current modal
+      const modal = this.closest('.modal');
+      modal.style.display = 'none';
+      
+      // Scroll to contact form and pre-fill subject
+      const subjectField = document.getElementById('subject');
+      if (subjectField) {
+        subjectField.value = `Inquiry about ${productName}`;
+      }
+      
+      // Focus on name field
+      const nameField = document.getElementById('name');
+      if (nameField) {
+        nameField.focus();
+      }
+    });
+  });
+  
+  // Add thumbnail functionality for each modal
+  document.querySelectorAll('.modal').forEach(modal => {
+    const thumbnails = modal.querySelectorAll('.thumbnail');
+    const productType = modal.id.split('-')[1]; // Extract product type from modal id
+    const mainImage = document.getElementById(`mainImage-${productType}`);
+    
+    thumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', function() {
+        // Update active thumbnail
+        thumbnails.forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Update main image
+        const imgSrc = this.getAttribute('data-img');
+        mainImage.src = imgSrc;
+        
+        // Reinitialize zoom
+        initZoom(mainImage, modal.querySelector('.zoom-lens'), modal.querySelector('.zoom-result'));
+      });
+    });
+  });
+  
+  // Image zoom functionality
+  function initZoom(img, lens, result) {
+    let cx, cy;
+    
+    // Calculate the ratio between result div and lens
+    cx = result.offsetWidth / lens.offsetWidth;
+    cy = result.offsetHeight / lens.offsetHeight;
+    
+    // Set background properties for the result div
+    result.style.backgroundImage = "url('" + img.src + "')";
+    result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+    
+    // Event listeners for mouse movements
+    lens.addEventListener("mousemove", moveLens);
+    img.addEventListener("mousemove", moveLens);
+    
+    // Touch support
+    lens.addEventListener("touchmove", moveLens);
+    img.addEventListener("touchmove", moveLens);
+    
+    function moveLens(e) {
+      let pos, x, y;
+      // Prevent any other actions that may occur when moving over the image
+      e.preventDefault();
+      // Get cursor position
+      pos = getCursorPos(e);
+      // Calculate position of the lens
+      x = pos.x - (lens.offsetWidth / 2);
+      y = pos.y - (lens.offsetHeight / 2);
+      
+      // Prevent the lens from being positioned outside the image
+      if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+      if (x < 0) {x = 0;}
+      if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+      if (y < 0) {y = 0;}
+      
+      // Set the position of the lens
+      lens.style.left = x + "px";
+      lens.style.top = y + "px";
+      // Display what the lens "sees"
+      result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+    }
+    
+    function getCursorPos(e) {
+      let a, x = 0, y = 0;
+      e = e || window.event;
+      // Get the x and y positions of the image
+      a = img.getBoundingClientRect();
+      // Calculate the cursor's x and y coordinates, relative to the image
+      x = e.pageX - a.left - window.pageXOffset;
+      y = e.pageY - a.top - window.pageYOffset;
+      return {x : x, y : y};
+    }
+  }
+});

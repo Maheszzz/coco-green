@@ -82,6 +82,7 @@
       </div>
     </section>
 
+   
     <!-- Products Section -->
     <section class="products" id="products" data-aos="fade-up">
       <div class="container">
@@ -111,7 +112,7 @@
                 <li>Enhances stability in landscapes</li>
                 <li>Retains moisture for plant health</li>
               </ul>
-              <a href="#" class="btn inquire-now-btn">Inquire Now</a>
+              <a href="#" class="btn inquire-now-btn" data-product="netmat">Inquire Now</a>
             </div>
           </div>
 
@@ -132,7 +133,7 @@
                 <li>Creates air pockets in soil mixes</li>
                 <li>Ideal for moisture management</li>
               </ul>
-              <a href="#" class="btn inquire-now-btn">Inquire Now</a>
+              <a href="#" class="btn inquire-now-btn" data-product="mat">Inquire Now</a>
             </div>
           </div>
 
@@ -153,7 +154,7 @@
                 <li>Low EC for sensitive plants</li>
                 <li>Reduces the need for frequent watering</li>
               </ul>
-              <a href="#" class="btn inquire-now-btn">Inquire Now</a>
+              <a href="#" class="btn inquire-now-btn" data-product="yarn">Inquire Now</a>
             </div>
           </div>
 
@@ -173,7 +174,7 @@
                 <li>Reduces transplant shock</li>
                 <li>Biodegradable packaging</li>
               </ul>
-              <a href="#" class="btn inquire-now-btn">Inquire Now</a>
+              <a href="#" class="btn inquire-now-btn" data-product="fiber">Inquire Now</a>
             </div>
           </div>
 
@@ -194,7 +195,7 @@
                 <li>Regulates soil temperature</li>
                 <li>Attractive natural appearance</li>
               </ul>
-              <a href="#" class="btn inquire-now-btn">Inquire Now</a>
+              <a href="#" class="btn inquire-now-btn" data-product="mesh">Inquire Now</a>
             </div>
           </div>
 
@@ -215,7 +216,7 @@
                 <li>Improves nutrient cycling</li>
                 <li>Chemical-free crop nutrition</li>
               </ul>
-              <a href="#" class="btn inquire-now-btn">Inquire Now</a>
+              <a href="#" class="btn inquire-now-btn" data-product="peat">Inquire Now</a>
             </div>
           </div>
         </div>
@@ -286,36 +287,29 @@
     </section>
 
     <!-- Modal Popup -->
-    <div id="inquire-modal" class="modal">
+     <!-- Individual Modal Popups for each product -->
+    <!-- Modal for Coir NetMat -->
+    <div id="modal-netmat" class="modal">
       <div class="modal-content">
-        <span class="close-btn">&times;</span>
+        <span class="close-btn" data-modal="modal-netmat">&times;</span>
         <div class="product-container">
           <div class="thumbnail-container">
-            <div class="thumbnail active" data-img="coco-photos/photo1.jpg">
-              <img src="coco-photos/photo1.jpg" alt="Thumbnail 1" />
+            <div class="thumbnail active" data-img="coco-photos/photo12.jpg">
+              <img src="coco-photos/photo12.jpg" alt="NetMat 1" />
+            </div>
+            <div class="thumbnail" data-img="coco-photos/photo1.jpg">
+              <img src="coco-photos/photo1.jpg" alt="NetMat 2" />
             </div>
             <div class="thumbnail" data-img="coco-photos/photo10.jpg">
-              <img src="coco-photos/photo10.jpg" alt="Thumbnail 2" />
-            </div>
-            <div class="thumbnail" data-img="coco-photos/photo11.jpg">
-              <img src="coco-photos/photo11.jpg" alt="Thumbnail 3" />
-            </div>
-            <div class="thumbnail" data-img="coco-photos/photo12.jpg">
-              <img src="coco-photos/photo12.jpg" alt="Thumbnail 4" />
-            </div>
-            <div class="thumbnail" data-img="coco-photos/photo13.jpg">
-              <img src="coco-photos/photo13.jpg" alt="Thumbnail 5" />
-            </div>
-            <div class="thumbnail" data-img="coco-photos/photo14.jpg">
-              <img src="coco-photos/photo14.jpg" alt="Thumbnail 6" />
+              <img src="coco-photos/photo10.jpg" alt="NetMat 3" />
             </div>
           </div>
 
           <div class="main-image-container">
             <div class="main-image">
               <img
-                src="coco-photos/photo29.jpg"
-                id="mainImage"
+                src="coco-photos/photo12.jpg"
+                id="mainImage-netmat"
                 alt="Main Product Image"
               />
               <div class="zoom-lens"></div>
@@ -323,10 +317,196 @@
             <div class="zoom-result"></div>
           </div>
         </div>
-        <p id="product-description">
-          This is a detailed description of the product image displayed above.
+        <h3>Coir NetMat</h3>
+        <p id="product-description-netmat">
+          Our premium Coir NetMat is a durable, biodegradable erosion control solution made from 100% natural coconut fibers. Designed for slope stabilization and erosion prevention, these nets provide excellent soil reinforcement while allowing vegetation to establish and grow through the material. The netmat's natural fibers gradually biodegrade, adding organic matter to the soil while providing long-term erosion control.
         </p>
-        <a href="#contact" class="btn">Contact Us About This Product</a>
+        <a href="#contact" class="btn modal-contact-btn" data-product="Coir NetMat">Contact Us About This Product</a>
+      </div>
+    </div>
+
+    <!-- Modal for Coir Mat -->
+    <div id="modal-mat" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" data-modal="modal-mat">&times;</span>
+        <div class="product-container">
+          <div class="thumbnail-container">
+            <div class="thumbnail active" data-img="coco-photos/photo14.jpg">
+              <img src="coco-photos/photo14.jpg" alt="Mat 1" />
+            </div>
+            <div class="thumbnail" data-img="coco-photos/photo11.jpg">
+              <img src="coco-photos/photo11.jpg" alt="Mat 2" />
+            </div>
+            <div class="thumbnail" data-img="coco-photos/photo13.jpg">
+              <img src="coco-photos/photo13.jpg" alt="Mat 3" />
+            </div>
+          </div>
+
+          <div class="main-image-container">
+            <div class="main-image">
+              <img
+                src="coco-photos/photo14.jpg"
+                id="mainImage-mat"
+                alt="Main Product Image"
+              />
+              <div class="zoom-lens"></div>
+            </div>
+            <div class="zoom-result"></div>
+          </div>
+        </div>
+        <h3>Coir Mat</h3>
+        <p id="product-description-mat">
+          Our Coir Mat provides exceptional drainage and aeration for your plants' root systems. Made from larger pieces of coconut husk, these mats are ideal for orchids, epiphytes, and other plants that require well-draining media. The slow breakdown rate ensures long-lasting performance, while the natural structure creates beneficial air pockets in soil mixes for optimal root health.
+        </p>
+        <a href="#contact" class="btn modal-contact-btn" data-product="Coir Mat">Contact Us About This Product</a>
+      </div>
+    </div>
+
+    <!-- Modal for Coir Yarn -->
+    <div id="modal-yarn" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" data-modal="modal-yarn">&times;</span>
+        <div class="product-container">
+          <div class="thumbnail-container">
+            <div class="thumbnail active" data-img="coco-photos/photo22.jpg">
+              <img src="coco-photos/photo22.jpg" alt="Yarn 1" />
+            </div>
+            <div class="thumbnail" data-img="coco-photos/photo12.jpg">
+              <img src="coco-photos/photo12.jpg" alt="Yarn 2" />
+            </div>
+            <div class="thumbnail" data-img="coco-photos/photo14.jpg">
+              <img src="coco-photos/photo14.jpg" alt="Yarn 3" />
+            </div>
+          </div>
+
+          <div class="main-image-container">
+            <div class="main-image">
+              <img
+                src="coco-photos/photo22.jpg"
+                id="mainImage-yarn"
+                alt="Main Product Image"
+              />
+              <div class="zoom-lens"></div>
+            </div>
+            <div class="zoom-result"></div>
+          </div>
+        </div>
+        <h3>Coir Yarn</h3>
+        <p id="product-description-yarn">
+          Our Coir Yarn is produced from carefully selected coconut fibers, processed to create strong, durable strands perfect for various applications. This versatile product is ideal for seed starting and as a soil amendment, offering superior water absorption and excellent root development. With its low electrical conductivity (EC), our coir yarn is suitable for sensitive plants while reducing the need for frequent watering.
+        </p>
+        <a href="#contact" class="btn modal-contact-btn" data-product="Coir Yarn">Contact Us About This Product</a>
+      </div>
+    </div>
+
+    <!-- Modal for Coir Fiber -->
+    <div id="modal-fiber" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" data-modal="modal-fiber">&times;</span>
+        <div class="product-container">
+          <div class="thumbnail-container">
+            <div class="thumbnail active" data-img="coco-photos/photo35.jpg">
+              <img src="coco-photos/photo35.jpg" alt="Fiber 1" />
+            </div>
+            <div class="thumbnail" data-img="coco-photos/photo27.jpg">
+              <img src="coco-photos/photo27.jpg" alt="Fiber 2" />
+            </div>
+            <div class="thumbnail" data-img="coco-photos/photo38.jpg">
+              <img src="coco-photos/photo38.jpg" alt="Fiber 3" />
+            </div>
+          </div>
+
+          <div class="main-image-container">
+            <div class="main-image">
+              <img
+                src="coco-photos/photo35.jpg"
+                id="mainImage-fiber"
+                alt="Main Product Image"
+              />
+              <div class="zoom-lens"></div>
+            </div>
+            <div class="zoom-result"></div>
+          </div>
+        </div>
+        <h3>Coir Fiber</h3>
+        <p id="product-description-fiber">
+          Our Coir Fiber is extracted from the outer husks of coconuts through an eco-friendly process that preserves the natural characteristics of the fiber. Ideal for commercial growers, these pre-buffered and pH-balanced fibers reduce transplant shock while providing excellent aeration and drainage. The biodegradable nature of our coir fiber makes it an environmentally responsible choice for sustainable growing practices.
+        </p>
+        <a href="#contact" class="btn modal-contact-btn" data-product="Coir Fiber">Contact Us About This Product</a>
+      </div>
+    </div>
+
+    <!-- Modal for Coir Mesh Roll -->
+    <div id="modal-mesh" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" data-modal="modal-mesh">&times;</span>
+        <div class="product-container">
+          <div class="thumbnail-container">
+            <div class="thumbnail active" data-img="coco-photos/photo11.jpg">
+              <img src="coco-photos/photo11.jpg" alt="Mesh 1" />
+            </div>
+            <div class="thumbnail" data-img="coco-photos/photo12.jpg">
+              <img src="coco-photos/photo12.jpg" alt="Mesh 2" />
+            </div>
+            <div class="thumbnail" data-img="coco-photos/photo13.jpg">
+              <img src="coco-photos/photo13.jpg" alt="Mesh 3" />
+            </div>
+          </div>
+
+          <div class="main-image-container">
+            <div class="main-image">
+              <img
+                src="coco-photos/photo11.jpg"
+                id="mainImage-mesh"
+                alt="Main Product Image"
+              />
+              <div class="zoom-lens"></div>
+            </div>
+            <div class="zoom-result"></div>
+          </div>
+        </div>
+        <h3>Coir Mesh Roll</h3>
+        <p id="product-description-mesh">
+          Our Coir Mesh Rolls are designed for landscape and garden applications, providing both decorative appeal and functional benefits. These rolls effectively suppress weed growth while conserving soil moisture and regulating temperature. The attractive natural appearance of our mesh rolls blends harmoniously with any landscape design while providing essential protection for your soil and plants.
+        </p>
+        <a href="#contact" class="btn modal-contact-btn" data-product="Coir Mesh Roll">Contact Us About This Product</a>
+      </div>
+    </div>
+
+    <!-- Modal for Coco Peat -->
+    <div id="modal-peat" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" data-modal="modal-peat">&times;</span>
+        <div class="product-container">
+          <div class="thumbnail-container">
+            <div class="thumbnail active" data-img="coco-photos/photo33.jpg">
+              <img src="coco-photos/photo33.jpg" alt="Peat 1" />
+            </div>
+            <div class="thumbnail" data-img="coco-photos/photo26.jpg">
+              <img src="coco-photos/photo26.jpg" alt="Peat 2" />
+            </div>
+            <div class="thumbnail" data-img="coco-photos/photo18.jpg">
+              <img src="coco-photos/photo18.jpg" alt="Peat 3" />
+            </div>
+          </div>
+
+          <div class="main-image-container">
+            <div class="main-image">
+              <img
+                src="coco-photos/photo33.jpg"
+                id="mainImage-peat"
+                alt="Main Product Image"
+              />
+              <div class="zoom-lens"></div>
+            </div>
+            <div class="zoom-result"></div>
+          </div>
+        </div>
+        <h3>Coco Peat</h3>
+        <p id="product-description-peat">
+          Our Coco Peat is a premium organic substrate made from coconut residue and enriched with beneficial microorganisms. This sustainable growing medium provides slow-release nutrients while enhancing soil microbial activity and improving nutrient cycling. Free from chemicals, our Coco Peat offers a natural solution for crop nutrition, creating the ideal environment for healthy plant growth.
+        </p>
+        <a href="#contact" class="btn modal-contact-btn" data-product="Coco Peat">Contact Us About This Product</a>
       </div>
     </div>
 
