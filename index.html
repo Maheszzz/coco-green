@@ -2,6 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover">
+    <meta name="theme-color" content="#2e7d32">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CocoGreen</title>
     <link rel="stylesheet" href="style.css" />
@@ -9,7 +11,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
     />
-    <script src="script.js"></script>
   </head>
   <body>
     <!-- Header -->
@@ -17,9 +18,10 @@
       <div class="container">
         <nav class="navbar">
           <div class="logo">
-            <img src="coco-photos/logo1.png" alt="CocoGreen Logo" />
-            <h1>Coco Green LLC</h1>
-            <!-- <p>WE GEAR THE GLOBE  FOR GREEN</p> -->
+            <a href="#home" class="logo-link">
+              <img src="coco-photos/logo1.png" alt="CocoGreen Logo" />
+              <h1>Coco Green LLC</h1>
+            </a>
           </div>
           <ul class="nav-links">
             <li><a href="#home">Home</a></li>
@@ -62,7 +64,7 @@
           </div>
           <div class="about-text">
             <h3>Our Commitment to Sustainability</h3>
-            <p>
+            <p style="text-align: justify;">
               RR Coirs and NeoCocos proudly operate three state-of-the-art coir
               manufacturing units in India, backed by 20 years of expertise in
               the coir industry. As naturalists, we are deeply committed to
@@ -102,7 +104,7 @@
             </div>
             <div class="product-info">
               <h3>Coir NetMat</h3>
-              <p>
+              <p style="text-align: left;">
                 Durable, biodegradable erosion control mat made from natural
                 coconut fibers.
               </p>
@@ -112,9 +114,7 @@
                 <li>Enhances stability in landscapes</li>
                 <li>Retains moisture for plant health</li>
               </ul>
-              <a href="#" class="btn inquire-now-btn" data-product="netmat"
-                >Inquire Now</a
-              >
+              <a href="#" class="btn inquire-now-btn">Inquire Now</a>
             </div>
           </div>
 
@@ -125,7 +125,7 @@
             </div>
             <div class="product-info">
               <h3>Coir Mat</h3>
-              <p>
+              <p style="text-align: left;">
                 Larger pieces of coconut husk for improved drainage and
                 aeration.
               </p>
@@ -135,9 +135,7 @@
                 <li>Creates air pockets in soil mixes</li>
                 <li>Ideal for moisture management</li>
               </ul>
-              <a href="#" class="btn inquire-now-btn" data-product="mat"
-                >Inquire Now</a
-              >
+              <a href="#" class="btn inquire-now-btn">Inquire Now</a>
             </div>
           </div>
 
@@ -148,7 +146,7 @@
             </div>
             <div class="product-info">
               <h3>Coir Yarn</h3>
-              <p>
+              <p style="text-align: left;">
                 Fine-textured coir dust ideal for seed starting and as a soil
                 amendment.
               </p>
@@ -158,9 +156,7 @@
                 <li>Low EC for sensitive plants</li>
                 <li>Reduces the need for frequent watering</li>
               </ul>
-              <a href="#" class="btn inquire-now-btn" data-product="yarn"
-                >Inquire Now</a
-              >
+              <a href="#" class="btn inquire-now-btn">Inquire Now</a>
             </div>
           </div>
 
@@ -171,7 +167,7 @@
             </div>
             <div class="product-info">
               <h3>Coir Fiber</h3>
-              <p>
+              <p style="text-align: left;">
                 Ready-to-use growing bags filled with our premium coco coir mix.
               </p>
               <ul class="benefits-list">
@@ -180,9 +176,7 @@
                 <li>Reduces transplant shock</li>
                 <li>Biodegradable packaging</li>
               </ul>
-              <a href="#" class="btn inquire-now-btn" data-product="fiber"
-                >Inquire Now</a
-              >
+              <a href="#" class="btn inquire-now-btn">Inquire Now</a>
             </div>
           </div>
 
@@ -193,7 +187,7 @@
             </div>
             <div class="product-info">
               <h3>Coir Mesh Roll</h3>
-              <p>
+              <p style="text-align: left;">
                 Decorative and functional mulch for landscape and garden
                 applications.
               </p>
@@ -203,9 +197,7 @@
                 <li>Regulates soil temperature</li>
                 <li>Attractive natural appearance</li>
               </ul>
-              <a href="#" class="btn inquire-now-btn" data-product="mesh"
-                >Inquire Now</a
-              >
+              <a href="#" class="btn inquire-now-btn">Inquire Now</a>
             </div>
           </div>
 
@@ -216,7 +208,7 @@
             </div>
             <div class="product-info">
               <h3>Coco Peat</h3>
-              <p>
+              <p style="text-align: left;">
                 Organic fertilizer from coconut residue, enriched with
                 beneficial microorganisms.
               </p>
@@ -226,16 +218,127 @@
                 <li>Improves nutrient cycling</li>
                 <li>Chemical-free crop nutrition</li>
               </ul>
-              <a href="#" class="btn inquire-now-btn" data-product="peat"
-                >Inquire Now</a
-              >
+              <a href="#" class="btn inquire-now-btn">Inquire Now</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-   
+    </section>
+
+    <!-- Working Method Section -->
+    <section class="working-method" id="working-method" data-aos="fade-up">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Working Method</h2>
+          <p>A Step-by-Step Guide to Understanding Our Products</p>
+        </div>
+        <div class="method-grid">
+          <div class="method-card" data-aos="fade-right">
+            <div class="method-number">01</div>
+            <h3>Raw Material Selection</h3>
+            <p>Premium coconut husks are carefully selected and sourced from sustainable farms to ensure the highest quality end products.</p>
+          </div>
+          
+          <div class="method-card" data-aos="fade-up">
+            <div class="method-number">02</div>
+            <h3>Processing & Treatment</h3>
+            <p>Using advanced technology, raw materials undergo precise processing and eco-friendly treatment methods.</p>
+          </div>
+          
+          <div class="method-card" data-aos="fade-left">
+            <div class="method-number">03</div>
+            <h3>Quality Testing</h3>
+            <p>Rigorous quality control measures ensure our products meet international standards for agricultural use.</p>
+          </div>
+          
+          <div class="method-card" data-aos="fade-right">
+            <div class="method-number">04</div>
+            <h3>Product Development</h3>
+            <p>Innovation-driven approach to create sustainable solutions for modern agricultural needs.</p>
+          </div>
+          
+          <div class="method-card" data-aos="fade-up">
+            <div class="method-number">05</div>
+            <h3>Packaging & Storage</h3>
+            <p>Environmental-friendly packaging ensures product integrity during storage and transportation.</p>
+          </div>
+          
+          <div class="method-card" data-aos="fade-left">
+            <div class="method-number">06</div>
+            <h3>Distribution</h3>
+            <p>Efficient global distribution network ensures timely delivery to our valued customers worldwide.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Working Method Slider -->
+    <section class="method-slider" data-aos="fade-up">
+      <div class="container">
+        <div class="slider-container">
+          <div class="slide fade">
+            <img src="coco-photos/photo25.jpg" alt="Quality Control">
+            <div class="slide-caption">
+              <h3>Raw Material Selection</h3>
+              <p>Premium quality coconut husks sourced sustainably</p>
+            </div>
+          </div>
+
+          <div class="slide fade">
+            <img src="coco-photos/photo26.jpg" alt="Processing">
+            <div class="slide-caption">
+              <h3>Initial Processing</h3>
+              <p>Advanced cleaning and preparation techniques</p>
+            </div>
+          </div>
+
+          <div class="slide fade">
+            <img src="coco-photos/photo27.jpg" alt="Manufacturing">
+            <div class="slide-caption">
+              <h3>Manufacturing</h3>
+              <p>State-of-the-art production facilities</p>
+            </div>
+          </div>
+
+          <div class="slide fade">
+            <img src="coco-photos/photo28.jpg" alt="Quality Testing">
+            <div class="slide-caption">
+              <h3>Quality Testing</h3>
+              <p>Rigorous quality control at every stage</p>
+            </div>
+          </div>
+
+          <div class="slide fade">
+            <img src="coco-photos/photo29.jpg" alt="Final Product">
+            <div class="slide-caption">
+              <h3>Final Product</h3>
+              <p>Ready for global distribution</p>
+            </div>
+          </div>
+
+          <button class="slider-nav prev" onclick="changeSlide(-1)">
+            <svg viewBox="0 0 24 24">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+          </button>
+          <button class="slider-nav next" onclick="changeSlide(1)">
+            <svg viewBox="0 0 24 24">
+              <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="dot-container">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide(4)"></span>
+          <span class="dot" onclick="currentSlide(5)"></span>
+        </div>
+      </div>
+    </section>
 
     <!-- Benefits Section -->
     <section class="benefits" id="benefits" data-aos="fade-up">
@@ -343,7 +446,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact" data-aos="slide-up">
+    <section class="contact" id="contact">
       <div class="container">
         <div class="section-title">
           <h2>Contact Us</h2>
@@ -385,49 +488,37 @@
           </div>
 
           <div class="contact-form">
-            <form id="customer-form">
+            <form id="customer-form" onsubmit="return false;">
               <div class="form-group">
-                <label for="name">Your Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  class="form-control"
-                  required
-                />
+                <label for="name">Your Name (optional)</label>
+                <input type="text" id="name" name="name" class="form-control" />
               </div>
               <div class="form-group">
-                <label for="email">Your Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="form-control"
-                  required
-                />
+                <label for="email">Your Email <span class="required-asterisk">*</span></label>
+                <input type="email" id="email" name="email" class="form-control" required />
               </div>
               <div class="form-group">
-                <label for="subject">Subject</label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  class="form-control"
-                  required
-                />
+                <label for="subject">Your Mobile Number (optional)</label>
+                <input type="text" id="subject" name="subject" class="form-control" />
               </div>
               <div class="form-group">
-                <label for="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  class="form-control"
-                  rows="5"
+                <label for="message">Message <span class="required-asterisk">*</span></label>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  class="form-control" 
+                  rows="10" 
+                  maxlength="5000" 
                   required
+                  placeholder="Enter your message here (up to 500 words)"
                 ></textarea>
+                <div class="char-count"><span id="word-count">0</span>/500 words</div>
               </div>
-              <button type="submit" class="btn">Send Message</button>
-              <div class="feedback-message" id="feedback-message"></div>
+              <div class="btn-wrapper">
+                <button type="button" class="btn" onclick="sendemail()">Send Message</button>
+                <div id="validation-message" class="validation-message"></div>
+                <div class="feedback-message" id="feedback-message"></div>
+              </div>
             </form>
           </div>
         </div>
@@ -435,98 +526,125 @@
           <div class="map-container">
             <iframe
               id="map"
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15551.131998284611!2d80.2415875!3d12.9159825!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d6f5cd2ca43%3A0x63869e0f47055a4a!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1710532271247!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.7832517056974!2d80.2415875!3d12.9159825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d6f5cd2ca43%3A0x63869e0f47055a4a!2sInstitute%20of%20Remote%20Sensing%2C%20Anna%20University!5e0!3m2!1sen!2sin!4v1710532271247!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style="border:0;"
               allowfullscreen=""
               loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            >
+              referrerpolicy="no-referrer-when-downgrade">
             </iframe>
           </div>
-          <a
-            href="https://maps.app.goo.gl/HmUgwMB9fJdMbjGu5"
-            class="directions-link"
+          <a 
+            href="https://maps.app.goo.gl/HmUgwMB9fJdMbjGu5" 
+            class="directions-link" 
             target="_blank"
-            >Get Directions →</a
-          >
+            rel="noopener noreferrer">
+            Get Directions →
+          </a>
         </div>
       </div>
     </section>
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="coco-photos/logo1.png" alt="CocoGreen Logo" />
+      </div>
+      <div class="footer-col">
+        <h4>Coco Green</h4>
+        <p>
+          Providing sustainable coconut-based solutions for better growing
+          since 2010. Committed to environmental stewardship and supporting
+          farming communities.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul class="footer-links">
+          <li><a href="#products">Coir NetMat</a></li>
+          <li><a href="#products">Coir Mat</a></li>
+          <li><a href="#products">Coir Yarn</a></li>
+          <li><a href="#products">Coir Fiber</a></li>
+          <li><a href="#products">Coir Mesh Roll</a></li>
+          <li><a href="#products">Coco Peat</a></li>
+        </ul>
+      </div>
+     
+    </div>
+    <div class="copyright">
+      &copy; 2025 Coco Green. All rights reserved.
+    </div>
+  </div>
+</footer>
 
+
+    
     <!-- Product Inquiry Modal -->
-    <div id="inquiryModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Product Inquiry</h2>
-        <form id="inquiryForm">
-          <div class="form-group">
-            <label for="productName">Product</label>
-            <input type="text" id="productName" name="productName" readonly>
+    <button class="close-modal" title="Close">×</button>
+    <div id="inquiryModal" class="inquiry-modal">
+      <div class="inquiry-content">
+        <div class="product-gallery">
+          <div class="thumbnail-strip">
+            <img class="modal-thumbnail active" src="" alt="Thumbnail 1">
+            <img class="modal-thumbnail" src="" alt="Thumbnail 2">
+            <img class="modal-thumbnail" src="" alt="Thumbnail 3">
+            <img class="modal-thumbnail" src="" alt="Thumbnail 4">
           </div>
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" required>
+          <div class="main-image-container">
+            <img id="modalMainImage" src="" alt="Product" class="main-image">
           </div>
-          <div class="form-group">
-            <label for="email">Your Email</label>
-            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="product-details">
+          <h3 id="modalProductName"></h3>
+          <p id="modalProductDescription"></p>
+          <div class="product-features">
+            <h4>Key Features</h4>
+            <ul id="modalFeatures" class="features-list"></ul>
           </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required></textarea>
-          </div>
-          <button type="submit" class="btn">Submit Inquiry</button>
-        </form>
+          <a href="#contact" class="btn contact-btn">Contact Us</a>
+        </div>
       </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="footer-container">
-          <div class="footer-logo">
-            <img src="coco-photos/logo1.png" alt="CocoGreen Logo" />
-          </div>
-          <div class="footer-col">
-            <h4>Coco Green</h4>
-            <p>
-              Providing sustainable coconut-based solutions for better growing
-              since 2010. Committed to environmental stewardship and supporting
-              farming communities.
-            </p>
-          </div>
-          <div class="footer-col">
-            <h4>Quick Links</h4>
-            <ul class="footer-links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#products">Products</a></li>
-              <li><a href="#benefits">Benefits</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-          <div class="footer-col"></div>
-            <h4>Products</h4>
-            <ul class="footer-links">
-              <li><a href="#products">Coir NetMat</a></li>
-              <li><a href="#products">Coir Mat</a></li>
-              <li><a href="#products">Coir Yarn</a></li>
-              <li><a href="#products">Coir Fiber</a></li>
-              <li><a href="#products">Coir Mesh Roll</a></li>
-              <li><a href="#products">Coco Peat</a></li>
-            </ul>
-          </div>
-          <div class="footer-col"></div>
-        </div>
-      </div>
-    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
     <script>
       AOS.init({
-        once: false, // Ensure animations trigger every time elements come into view
+        once: true,
+        offset: 100,
+        duration: 800,
+        easing: 'ease-out',
+        disable: 'mobile'
+      });
+
+   
+
+      window.addEventListener('beforeunload', () => {
+        document.querySelectorAll('[data-aos]').forEach(el => {
+          el.removeAttribute('data-aos-animate');
+        });
       });
     </script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function() {
+        emailjs.init("9tY__hTImYmuy84ZM"); // Use your actual public key
+      })();
+    </script>
+    <script src="config.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
