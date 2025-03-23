@@ -82,40 +82,100 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Handle both logo and home link clicks
-  document.querySelector('.logo-link').addEventListener('click', function(e) {
+  document.querySelector(".logo-link").addEventListener("click", function (e) {
     e.preventDefault();
     window.scrollTo({
       top: 0,
-      behavior: 'auto'
+      behavior: "auto",
     });
   });
 
   // Update existing navigation click handlers
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', function(e) {
+  document.querySelectorAll(".nav-links a").forEach((link) => {
+    link.addEventListener("click", function (e) {
       e.preventDefault();
-      const href = this.getAttribute('href');
-      
-      if (href === '#home') {
+      const href = this.getAttribute("href");
+
+      if (href === "#home") {
         window.scrollTo({
           top: 0,
-          behavior: 'auto'
+          behavior: "auto",
         });
       } else {
         const target = document.querySelector(href);
         if (target) {
           const headerOffset = 70;
           const elementPosition = target.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          
+          const offsetPosition =
+            elementPosition + window.pageYOffset - headerOffset;
+
           window.scrollTo({
             top: offsetPosition,
-            behavior: 'smooth'
+            behavior: "smooth",
           });
         }
       }
     });
   });
+
+  // Add footer product link handlers
+  document
+    .querySelectorAll('.footer-links a[href="#products"]')
+    .forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const productName = this.textContent.trim();
+        const data = productData[productName];
+
+        if (data) {
+          const modal = document.getElementById("inquiryModal");
+          const mainImage = document.getElementById("modalMainImage");
+          const productNameEl = document.getElementById("modalProductName");
+          const description = document.getElementById(
+            "modalProductDescription"
+          );
+          const features = document.getElementById("modalFeatures");
+          const closeBtn = document.querySelector(".close-modal");
+
+          // Update modal content
+          productNameEl.textContent = productName;
+          description.textContent = data.description;
+          features.innerHTML = data.features
+            .map((f) => `<li>${f}</li>`)
+            .join("");
+          mainImage.src = data.mainImage;
+
+          // Update thumbnails
+          document.querySelectorAll(".modal-thumbnail").forEach((thumb, i) => {
+            if (data.thumbnails[i]) {
+              thumb.src = data.thumbnails[i];
+              thumb.style.display = "block";
+              thumb.classList.toggle("active", i === 0);
+            } else {
+              thumb.style.display = "none";
+            }
+          });
+
+          // Show modal
+          modal.style.display = "flex";
+          closeBtn.style.display = "flex";
+          document.body.style.overflow = "hidden";
+        } else {
+          // If no matching product data, scroll to products section
+          const target = document.querySelector("#products");
+          if (target) {
+            const headerOffset = 70;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition =
+              elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth",
+            });
+          }
+        }
+      });
+    });
 });
 
 // Add this after DOMContentLoaded
@@ -527,6 +587,17 @@ function initializeModal() {
 
   // Update the window.closeModal reference
   window.closeModal = cleanupModalState;
+
+  // Footer product links
+  document
+    .querySelectorAll('.footer-links a[href="#products"]')
+    .forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const productName = link.textContent.trim();
+        openModal(productName);
+      });
+    });
 }
 
 document.addEventListener("DOMContentLoaded", initializeModal);
