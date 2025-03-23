@@ -179,6 +179,34 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     });
+
+  // Update footer navigation handling
+  document.querySelectorAll('.footer-links a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const href = this.getAttribute("href");
+
+      if (href === "#home") {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      } else {
+        const target = document.querySelector(href);
+        if (target) {
+          const headerHeight = 70; // Match the header height variable
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition =
+            elementPosition + window.pageYOffset - headerHeight;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
+      }
+    });
+  });
 });
 
 // Add this after DOMContentLoaded
@@ -1097,4 +1125,64 @@ document.addEventListener("DOMContentLoaded", function () {
       modal.style.display = "none";
       document.body.style.overflow = ""; // Restore scrolling
     });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("inquiryModal");
+  const inquireButtons = document.querySelectorAll(".inquire-now-btn");
+  const closeBtn = document.querySelector(".close-modal");
+
+  // Modal handling
+  function openModal(productName) {
+    const data = productData[productName];
+    if (!data) return;
+
+    // Update modal content
+    document.getElementById("modalProductName").textContent = productName;
+    document.getElementById("modalProductDescription").textContent =
+      data.description;
+    document.getElementById("modalFeatures").innerHTML = data.features
+      .map((f) => `<li>${f}</li>`)
+      .join("");
+    document.getElementById("modalMainImage").src = data.mainImage;
+
+    // Update thumbnails
+    document.querySelectorAll(".modal-thumbnail").forEach((thumb, i) => {
+      if (data.thumbnails[i]) {
+        thumb.src = data.thumbnails[i];
+        thumb.style.display = "block";
+        thumb.classList.toggle("active", i === 0);
+      } else {
+        thumb.style.display = "none";
+      }
+    });
+
+    // Show modal
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }
+
+  // Add click handlers to inquiry buttons
+  inquireButtons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      e.preventDefault();
+      const productName =
+        this.closest(".product-card").querySelector("h3").textContent;
+      openModal(productName);
+    });
+  });
+
+  // Close modal handlers
+  function closeModal() {
+    modal.style.display = "none";
+    document.body.style.overflow = "";
+  }
+
+  closeBtn?.addEventListener("click", closeModal);
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
 });
