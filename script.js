@@ -29,7 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const mobileMenu = document.querySelector(".mobile-menu");
   const navLinks = document.querySelector(".nav-links");
 
-  mobileMenu.addEventListener("click", function () {
+  mobileMenu.addEventListener("click", function (e) {
+    e.stopPropagation(); // Add this line
     this.classList.toggle("active");
     navLinks.classList.toggle("active");
     document.body.classList.toggle("menu-open");
@@ -59,7 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   navLinks.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", function () {
+      mobileMenu.classList.remove("active"); // Add this line
       navLinks.classList.remove("active");
+      document.body.classList.remove("menu-open");
     });
   });
 
@@ -596,6 +599,29 @@ function initializeModal() {
         e.preventDefault();
         const productName = link.textContent.trim();
         openModal(productName);
+      });
+    });
+
+  // Footer product links
+  document
+    .querySelectorAll('.footer-links a[href="#products"]')
+    .forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        // Scroll to products section smoothly
+        const target = document.querySelector("#products");
+        if (target) {
+          const headerOffset = 70;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition =
+            elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+        }
       });
     });
 }
