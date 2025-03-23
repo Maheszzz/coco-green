@@ -267,7 +267,7 @@ function initializeModal() {
     productName: document.getElementById("modalProductName"),
     description: document.getElementById("modalProductDescription"),
     features: document.getElementById("modalFeatures"),
-    closeBtn: document.querySelector(".close-modal"),
+    closeBtn: document.querySelector(".inquiry-content .close-modal"),
     mainImageContainer: document.querySelector(".main-image-container"),
     contactBtn: document.querySelector(".contact-btn"),
   };
