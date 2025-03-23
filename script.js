@@ -922,3 +922,44 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = document.getElementById("inquiryModal");
+  const inquireButtons = document.querySelectorAll(".inquire-now-btn");
+  const closeBtn = modal.querySelector(".close");
+
+  // Open modal
+  inquireButtons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      e.preventDefault();
+      const productName =
+        this.closest(".product-card").querySelector("h3").textContent;
+      document.getElementById("modalProductName").textContent = productName;
+      modal.style.display = "flex"; // Changed from 'block' to 'flex'
+      document.body.style.overflow = "hidden"; // Prevent background scrolling
+    });
+  });
+
+  // Close modal
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+    document.body.style.overflow = ""; // Restore scrolling
+  });
+
+  // Close on outside click
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+      document.body.style.overflow = ""; // Restore scrolling
+    }
+  });
+
+  // Handle form submission
+  document
+    .getElementById("inquiryForm")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
+      modal.style.display = "none";
+      document.body.style.overflow = ""; // Restore scrolling
+    });
+});
