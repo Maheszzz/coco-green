@@ -80,6 +80,42 @@ document.addEventListener("DOMContentLoaded", function () {
       mainImage.src = imgSrc;
     });
   });
+
+  // Handle both logo and home link clicks
+  document.querySelector('.logo-link').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'auto'
+    });
+  });
+
+  // Update existing navigation click handlers
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      
+      if (href === '#home') {
+        window.scrollTo({
+          top: 0,
+          behavior: 'auto'
+        });
+      } else {
+        const target = document.querySelector(href);
+        if (target) {
+          const headerOffset = 70;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
 });
 
 // Add this after DOMContentLoaded
