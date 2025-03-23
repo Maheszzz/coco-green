@@ -1059,7 +1059,9 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("inquiryModal");
   const inquireButtons = document.querySelectorAll(".inquire-now-btn");
-  const closeBtn = modal.querySelector(".close");
+  const closeBtn = modal?.querySelector(".close"); // Add optional chaining
+
+  if (!modal || !closeBtn) return; // Add guard clause
 
   // Open modal
   inquireButtons.forEach((button) => {

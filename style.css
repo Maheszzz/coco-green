@@ -20,12 +20,16 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   scroll-behavior: smooth; /* Added smooth scrolling */
+  overflow-x: hidden; /* Add this line */
+  width: 100%; /* Add this line */
+  position: relative; /* Add this line */
 }
 
 .container {
   width: min(90%, 1200px);
   margin: 0 auto;
   padding: 0 clamp(15px, 3vw, 20px);
+  overflow: hidden; /* Add this line */
 }
 
 /* Header Styles */
@@ -1977,5 +1981,33 @@ footer {
   .product-details h3 {
     font-size: 1.2rem;
     margin: 15px 0 10px;
+  }
+}
+
+/* Media query fixes */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .about-content,
+  .products-grid,
+  .benefits-container,
+  .contact-container {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .about-img {
+    width: 100%;
+    margin: 0;
+  }
+
+  .inquiry-modal .inquiry-content {
+    width: 95%;
+    margin: 0 auto;
   }
 }
